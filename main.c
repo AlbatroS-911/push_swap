@@ -55,14 +55,15 @@ int	main(void)
 
 	a = NULL;
 
-	// 🔥 Initialisation avec 5 valeurs
-	add_back(&a, new_node(5));
-	add_back(&a, new_node(4));
-	add_back(&a, new_node(3));
+	add_back(&a, new_node(100));
 	add_back(&a, new_node(2));
 	add_back(&a, new_node(1));
+	add_back(&a, new_node(30));
+	add_back(&a, new_node(3));
+	add_back(&a, new_node(5));
+	add_back(&a, new_node(4));
+	add_back(&a, new_node(32));
 
-	// 🔍 Affichage initial
 	printf("Avant:\n");
 	print_stack(a);
 
