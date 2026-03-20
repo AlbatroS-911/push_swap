@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 13:12:19 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/02/15 23:01:07 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/03/17 22:21:18 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,18 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	if (big[0] == '\0')
 		return (NULL);
-	if (len >= 0)
+
+	while (big[i] && i < len)
 	{
-		while (big[i] && i < len)
+		j = 0;
+		while ((big[i + j] == little[j]) && little[j] && (i + j) < len)
 		{
-			j = 0;
-			while ((big[i + j] == little[j]) && little[j] && (i + j) < len)
-			{
-				j++;
-				if (little[j] == '\0')
-					return ((char *)&big[i]);
-			}
-			i++;
+			j++;
+			if (little[j] == '\0')
+				return ((char *)&big[i]);
 		}
+		i++;
 	}
+
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
+/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:58:39 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/09 14:58:48 by anjaraan         ###   ########.fr       */
+/*   Updated: 2026/03/18 20:15:06 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int	is_sorted(t_stack *stack)
 {
-	int	i;
-
-	if (stack->size < 2)
+	if (!stack)
 		return (1);
-	i = stack->size - 1;
-	while (i > 0)
+	while (stack->next)
 	{
-		if (stack->data[i] < stack->data[i - 1])
+		if (stack->value > stack->next->value)
 			return (0);
-		i--;
 	}
 	return (1);
 }
