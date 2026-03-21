@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-static t_stack *last_node(t_stack *a)
-{
-	if (!a)
-		return (NULL);
-	while (a->next != NULL)
-		a = a->next;
-	return (a);
-}
-
 static void reverse_rotate(t_stack **stack)
 {
 	t_stack *first;

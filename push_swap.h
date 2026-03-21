@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/19 16:05:02 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/03/20 21:50:04 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "stdbool.h"
-// # include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
 
 // Data structures for stacks and nodes 
 typedef struct s_stack
@@ -46,9 +44,11 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
-void 	simple_strategy(t_stack **a, t_stack **b);
+void	simple_strategy(t_stack **a, t_stack **b);
 void	complex_strategy(t_stack *a, t_stack *b);
 int		ft_printf(const char *format, ...);
 float	compute_disorder(t_stack *a);
+t_stack	*last_node(t_stack *a);
+int		stack_size(t_stack *stack);
 
 #endif
