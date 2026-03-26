@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/20 21:50:04 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/03/25 21:10:25 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,17 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		is_sorted(t_stack *stack);
+void	adaptive_strategy(t_stack **a, t_stack **b);
 void	simple_strategy(t_stack **a, t_stack **b);
-void	complex_strategy(t_stack *a, t_stack *b);
+void	medium_strategy(t_stack **a, t_stack **b);
+void	complex_strategy(t_stack **a, t_stack **b);
 int		ft_printf(const char *format, ...);
 float	compute_disorder(t_stack *a);
 t_stack	*last_node(t_stack *a);
+t_stack	*find_min(t_stack *stack);
+t_stack *find_max(t_stack *stack);
 int		stack_size(t_stack *stack);
+void	set_above_median(t_stack *stack);
+float	ft_sqrt(int number);
 
 #endif

@@ -6,28 +6,11 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:46:55 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/20 18:31:10 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/03/23 15:54:30 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "simple_strategy.h"
-
-static void	set_above_median(t_stack *stack)
-{
-	int	size;
-	int	median;
-	int	i;
-
-	size = stack_size(stack);
-	median = size / 2;
-	i = 0;
-	while (stack)
-	{
-		stack->above_median = (i <= median);
-		i++;
-		stack = stack->next;
-	}
-}
 
 static void	bring_to_top(t_stack **stack, t_stack *target)
 {

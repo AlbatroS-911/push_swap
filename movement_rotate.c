@@ -31,8 +31,8 @@ void	rb(t_stack **b)
 
 void	rr(t_stack **a, t_stack **b)
 {
-	ra(a);
-	rb(b);
+	rotate(a);
+	rotate(b);
 	ft_printf("rr\n");
 }
 

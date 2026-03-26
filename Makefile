@@ -6,7 +6,7 @@
 #    By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/06 15:44:06 by anjaraan          #+#    #+#              #
-#    Updated: 2026/03/20 21:51:54 by tokrabem         ###   ########.fr        #
+#    Updated: 2026/03/25 21:08:55 by tokrabem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = push_swap.c is_sorted.c medium_strategy.c movement_push.c movement_rotate.c \
-      movement_reverse_rotate.c movement_swap.c disorder_metric.c simple_strategy.c \
-	  simple_strategy_utils.c ft_last_node.c ft_stack_size.c
+SRC = push_swap.c is_sorted.c movement_push.c movement_rotate.c movement_reverse_rotate.c \
+      movement_swap.c disorder_metric.c ft_sqrt.c ft_last_node.c adaptive_strategy.c simple_strategy.c \
+	  simple_strategy_utils.c ft_stack_size.c set_above_median.c medium_strategy.c medium_strategy_utils.c \
+	  complex_strategy.c complex_strategy_utils.c complex_set_strategy.c complex_set_cost.c 
 
 OBJ = $(SRC:.c=.o)
 

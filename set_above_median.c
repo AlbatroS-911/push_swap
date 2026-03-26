@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   set_above_median.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 14:58:39 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/24 20:45:24 by tokrabem         ###   ########.fr       */
+/*   Created: 2026/03/23 15:52:55 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/03/23 15:54:21 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+void	set_above_median(t_stack *stack)
 {
-	if (!stack)
-		return (1);
-	while (stack->next)
+	int	size;
+	int	median;
+	int	i;
+
+	size = stack_size(stack);
+	median = size / 2;
+	i = 0;
+	while (stack)
 	{
-		if (stack->value > stack->next->value)
-			return (0);
+		stack->above_median = (i <= median);
+		i++;
 		stack = stack->next;
 	}
-	return (1);
 }

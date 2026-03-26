@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 14:58:39 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/03/24 20:45:24 by tokrabem         ###   ########.fr       */
+/*   Created: 2026/03/23 16:19:34 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/03/24 19:17:46 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
+float	ft_sqrt(int number)
 {
-	if (!stack)
-		return (1);
-	while (stack->next)
+	double	i;
+	
+	i = 0.01;
+	while (i * i <= number)
 	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
+		if (i * i == number)
+			return(i);
+		i = i + 0.01;
 	}
-	return (1);
+	return (i);
 }

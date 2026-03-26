@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "push_swap.h"
+#include "libft/libft.h"
 
 t_stack	*new_node(int value)
 {
@@ -48,33 +49,34 @@ void	print_stack(t_stack *stack)
 	printf("\n");
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b;
+	t_stack	*b;
+	int		i;
+	int		value;
 
 	a = NULL;
 	b = NULL;
 
-	add_back(&a, new_node(100));
-	add_back(&a, new_node(2));
-	add_back(&a, new_node(1));
-	add_back(&a, new_node(30));
-	add_back(&a, new_node(3));
-	add_back(&a, new_node(5));
-	add_back(&a, new_node(4));
-	add_back(&a, new_node(32));
+	if (argc < 2)
+		return (0);
+
+	i = 1;
+	while (i < argc)
+	{
+		value = ft_atoi(argv[i]);
+		add_back(&a, new_node(value));
+		i++;
+	}
 
 	printf("Avant:\n");
 	print_stack(a);
 
 	ft_printf("Disorder metric = %f\n", compute_disorder(a));
 
-	// ra(&a);
-	// sa(&a);
-
 	printf("Apres:\n");
-	simple_strategy(&a, &b);
+	adaptive_strategy(&a, &b);
 	print_stack(a);
 
 	return (0);
