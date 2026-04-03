@@ -6,56 +6,64 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/03/24 20:28:19 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/02 07:07:07 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "medium_strategy.h"
 
-static void bring_b_to_top(t_stack **b, t_stack *target)
+static int	bring_b_to_top(t_stack **b, t_stack *target)
 {
+	int	ops;
+
+	ops = 0;
 	while (*b != target)
 	{
 		if (target->above_median)
-			rb(b);
+			ops += rb(b);
 		else
-			rrb(b);
+			ops += rrb(b);
 	}
+	return (ops);
 }
 
-static void	pull_back(t_stack **a, t_stack **b)
+static int	pull_back(t_stack **a, t_stack **b)
 {
 	t_stack	*max;
+	int		ops;
 
+	ops = 0;
 	while (*b)
 	{
 		set_above_median(*b);
 		max = find_max(*b);
-		bring_b_to_top(b, max);
-		pa(a, b);
+		ops += bring_b_to_top(b, max);
+		ops += pa(a, b);
 	}
+	return (ops);
 }
 
-void	medium_strategy(t_stack **a, t_stack **b)
-{	
+int	medium_strategy(t_stack **a, t_stack **b)
+{
 	int	size;
-	int	chunk_size;
 	int	chunk;
 	int	min;
 	int	max;
+	int	total_ops;
 
 	finding_index(*a);
 	size = stack_size(*a);
-	chunk_size = (int)ft_sqrt((double)size);
 	chunk = 0;
-	while (chunk * chunk_size < size)
+	total_ops = 0;
+	while (chunk * (int)ft_sqrt((double)size) < size)
 	{
-		min = chunk * chunk_size;
-		max = min + chunk_size - 1;
+		min = chunk * (int)ft_sqrt((double)size);
+		max = min + (int)ft_sqrt((double)size) - 1;
 		if (max >= size)
 			max = size - 1;
-		push_chunk(a, b, min, max);
+		total_ops += push_chunk(a, b, min, max);
 		chunk++;
 	}
-	pull_back(a, b);
+	total_ops += pull_back(a, b);
+	return (total_ops);
 }

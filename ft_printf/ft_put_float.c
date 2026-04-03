@@ -8,7 +8,7 @@ int ft_put_float(double num)
 	int		precision;
 
 	counter = 0;
-	precision = 1000; // 3 chiffres après la virgule
+	precision = 100;
 	if (num < 0)
 	{
 		counter += ft_putchar_fd('-', 1);
@@ -23,9 +23,9 @@ int ft_put_float(double num)
 		fractional_part = 0;
 		integer_part++;
 	}
-	if (fractional_part < 100)
-		counter += ft_putchar_fd('0', 1);
 	if (fractional_part < 10)
+		counter += ft_putchar_fd('0', 1);
+	if (fractional_part < 1)
 		counter += ft_putchar_fd('0', 1);
 	counter += ft_putnbr_base(fractional_part, "0123456789");
 	return (counter);

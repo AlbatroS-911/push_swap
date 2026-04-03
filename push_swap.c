@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "push_swap.h"
 #include "libft/libft.h"
+// #include "ft_printf/ft_printf.h"
 
 t_stack	*new_node(int value)
 {
@@ -43,10 +43,10 @@ void	print_stack(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("%d ", stack->value);
+		ft_printf("%d ", stack->value);
 		stack = stack->next;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -55,9 +55,11 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	int		i;
 	int		value;
+	// float	disorder_metric;
 
 	a = NULL;
 	b = NULL;
+	// disorder_metric = 0;
 
 	if (argc < 2)
 		return (0);
@@ -69,15 +71,15 @@ int	main(int argc, char **argv)
 		add_back(&a, new_node(value));
 		i++;
 	}
-
-	printf("Avant:\n");
-	print_stack(a);
-
-	ft_printf("Disorder metric = %f\n", compute_disorder(a));
-
-	printf("Apres:\n");
-	adaptive_strategy(&a, &b);
-	print_stack(a);
+	// disorder_metric = compute_disorder(a) * 100;
+	// ft_printf("Before:\n");
+	// print_stack(a);
+	// ft_printf("Operations:\n");
+	// adaptive_strategy(&a, &b);
+	// ft_printf("After:\n");
+	// print_stack(a);
+	show_bench(&a, &b);
+	// ft_printf("Disorder metric = %f%%\n", disorder_metric);
 
 	return (0);
 }

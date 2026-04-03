@@ -19,21 +19,24 @@ static void swap(t_stack **head)
 	
 }
 
-void	sa(t_stack **a)
+int	sa(t_stack **a)
 {
 	swap(a);
 	ft_printf("sa\n");
+	return (1);
 }
 
-void	sb(t_stack **b)
+int	sb(t_stack **b)
 {
 	swap(b);
 	ft_printf("sb\n");
+	return (1);
 }
 
-void	ss(t_stack **a, t_stack **b)
+int	ss(t_stack **a, t_stack **b)
 {
 	swap(a);
 	swap(b);
 	ft_printf("ss\n");
+	return (1);
 }

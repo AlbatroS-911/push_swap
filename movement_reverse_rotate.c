@@ -15,21 +15,24 @@ static void reverse_rotate(t_stack **stack)
 	first->prev = last;
 	*stack = last;
 }
-void	rra(t_stack **a)
+int	rra(t_stack **a)
 {
 	reverse_rotate(a);
 	ft_printf("rra\n");
+	return (1);
 }
 
-void	rrb(t_stack **b)
+int	rrb(t_stack **b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
+	return (1);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+int	rrr(t_stack **a, t_stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
 	ft_printf("rrr\n");
+	return (1);
 }

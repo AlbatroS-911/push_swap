@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium_strategy.h                                  :+:      :+:    :+:   */
+/*   bench_movement_reverse_rotate.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/23 15:41:53 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/01 18:32:01 by tokrabem         ###   ########.fr       */
+/*   Created: 2026/04/03 06:58:23 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/04/03 06:59:39 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEDIUM_STRATEGY_H
-# define MEDIUM_STRATEGY_H
+#include "bench.h"
 
-# include "push_swap.h"
+void	bench_rra(t_bench *bench)
+{
+	bench->rra++;
+}
 
-void	finding_index(t_stack *stack);
-int		in_chunk(t_stack *node, int max, int min);
-int		top_closer(t_stack **a, int min, int max);
-int		push_chunk(t_stack **a, t_stack **b, int min, int max);
+void	bench_rrb(t_bench *bench)
+{
+	bench->rrb++;
+}
 
-#endif
+void	bench_rrr(t_bench *bench)
+{
+	bench->rrr++;
+}
