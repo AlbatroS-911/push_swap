@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 20:10:43 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/01 19:01:41 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/04 17:26:59 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define COMPLEX_STRATEGY_H
 
 # include "push_swap.h"
+# include "bench.h"
 
-int		init_push(t_stack **a, t_stack **b);
-int		rotate_both(t_stack **a, t_stack **b, t_stack *cheap);
-int		rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheap);
-int		finish_rotation(t_stack **a, t_stack **b, t_stack *cheap);
+int		init_push(t_stack **a, t_stack **b, t_bench *bench);
+int		rotate_both(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench);
+int		rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench);
+int		finish_rotation(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench);
 t_stack *find_target(t_stack *a, int b_value);
 void	set_targets(t_stack *a, t_stack *b);
 void	set_cheap_move(t_stack *b);

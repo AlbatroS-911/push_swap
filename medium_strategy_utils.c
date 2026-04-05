@@ -6,11 +6,12 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:35:35 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/01 18:30:36 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:47:07 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "bench.h"
 
 void	finding_index(t_stack *stack)
 {
@@ -62,7 +63,7 @@ int	top_closer(t_stack **a, int min, int max)
 	return (top_distance <= bottom_distance);
 }
 
-int	push_chunk(t_stack **a, t_stack **b, int min, int max)
+int	push_chunk(t_stack **a, t_stack **b, t_bench *bench, int min, int max)
 {
 	int	pushed;
 	int	chunk_count;
@@ -75,15 +76,25 @@ int	push_chunk(t_stack **a, t_stack **b, int min, int max)
 	{
 		if (in_chunk(*a, min, max))
 		{
+			bench_pb(bench);
 			ops += pb(a, b);
 			if ((*b)->index > (min + max) / 2)
+			{
+				bench_rb(bench);
 				ops += rb(b);
+			}
 			pushed++;
 		}
 		else if (top_closer(a, min, max))
+		{
+			bench_ra(bench);
 			ops += ra(a);
+		}
 		else
+		{
+			bench_rra(bench);
 			ops += rra(a);
+		}
 	}
 	return (ops);
 }

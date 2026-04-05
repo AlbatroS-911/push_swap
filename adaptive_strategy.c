@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/23 18:04:03 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/02 21:31:08 by tokrabem         ###   ########.fr       */
+/*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/04/05 22:29:59 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,16 @@
 void	adaptive_strategy(t_stack **a, t_stack **b)
 {
 	float	disorder_index;
-
+	t_bench *bench;
+	
 	disorder_index = compute_disorder(*a);
-	ft_printf("Disorder :%f\n", disorder_index);
+	bench = malloc(sizeof(t_bench));
+	bench->print_moves = 1;
 	if (disorder_index < 0.2)
-	{
-		ft_printf("Total operations : %d\n", simple_strategy(a, b));
-		ft_printf("Adaptive / O(n²)\n");
-	}
+		(void)simple_strategy(a, b, bench);
 	else if (disorder_index >= 0.2 && disorder_index < 0.5)
-	{
-		ft_printf("Total operations : %d\n", medium_strategy(a, b));
-		ft_printf("Adaptive / O(n√n)\n");
-	}
+		(void)medium_strategy(a, b, bench);
 	else
-	{
-		ft_printf("Total operations : %d\n", complex_strategy(a, b));
-		ft_printf("Adaptive / O(n log n)\n");
-	}
+		(void)complex_strategy(a, b, bench);
+	free(bench);
 }

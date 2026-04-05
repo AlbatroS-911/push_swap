@@ -6,15 +6,14 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 06:44:21 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/03 07:04:56 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/05 22:23:17 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BENCH_H
 # define BENCH_H
-# include "push_swap.h"
 
-typedef struct t_bench
+typedef struct s_bench
 {
 	int	pa;
 	int	pb;
@@ -27,6 +26,7 @@ typedef struct t_bench
 	int	sa;
 	int	sb;
 	int	ss;
+	int	print_moves;
 }		t_bench;
 
 void	bench_pa(t_bench *bench);

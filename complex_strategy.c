@@ -6,11 +6,12 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 08:56:41 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/01 19:28:29 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:46:14 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "complex_strategy.h"
+#include "bench.h"
 
 static t_stack	*get_cheap_node(t_stack *b)
 {
@@ -23,7 +24,7 @@ static t_stack	*get_cheap_node(t_stack *b)
 	return (NULL);
 }
 
-static int	execute_move(t_stack **a, t_stack **b)
+static int	execute_move(t_stack **a, t_stack **b, t_bench *bench)
 {
 	t_stack	*cheap;
 	int		ops;
@@ -31,14 +32,16 @@ static int	execute_move(t_stack **a, t_stack **b)
 	ops = 0;
 	cheap = get_cheap_node(*b);
 	if (cheap->above_median && cheap->target_node->above_median)
-		ops += rotate_both(a, b, cheap);
+		ops += rotate_both(a, b, cheap, bench);
 	else if (!cheap->above_median && !cheap->target_node->above_median)
-		ops += rev_rotate_both(a, b, cheap);
-	ops += finish_rotation(a, b, cheap);
+		ops += rev_rotate_both(a, b, cheap, bench);
+	ops += finish_rotation(a, b, cheap, bench);
+	bench_pa(bench);
 	ops += pa(a, b);
 	return (ops);
 }
-static int	finalize_sort(t_stack **a)
+
+static int	finalize_sort(t_stack **a, t_bench *bench)
 {
 	t_stack	*min;
 	int		ops;
@@ -49,26 +52,33 @@ static int	finalize_sort(t_stack **a)
 	while (*a != min)
 	{
 		if (min->above_median)
+		{
+			bench_ra(bench);
 			ops += ra(a);
+		}
 		else
+		{
+			bench_rra(bench);
 			ops += rra(a);
+		}
 	}
 	return (ops);
 }
-int	complex_strategy(t_stack **a, t_stack **b)
+
+int	complex_strategy(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int	total_ops;
 
 	total_ops = 0;
-	total_ops += init_push(a, b);
+	total_ops += init_push(a, b, bench);
 	while (*b)
 	{
 		set_above_median_both(*a, *b);
 		set_targets(*a, *b);
 		set_push_cost(*a, *b);
 		set_cheap_move(*b);
-		total_ops += execute_move(a, b);
+		total_ops += execute_move(a, b, bench);
 	}
-	total_ops += finalize_sort(a);
+	total_ops += finalize_sort(a, bench);
 	return (total_ops);
 }
