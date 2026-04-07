@@ -21,11 +21,11 @@ int	main(int argc, char **argv)
 	}
 	// adaptive_strategy(&a, &b);
 	show_bench(&a, &b);
-	i = 1;
-	while (i < argc)
-	{
-		free(last_node(a));
-		i++;
-	}
+	// i = 1;
+	// while (i < argc)
+	// {
+	// 	free(last_node(a));
+	// 	i++;
+	// }
 	return (0);
 }
