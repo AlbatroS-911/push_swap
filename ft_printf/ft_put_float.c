@@ -6,39 +6,45 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 23:28:55 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/05 23:28:56 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 09:43:39 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_put_float(double num)
+static int	ft_fractional(double num, int integer_part, int fd)
 {
-	int		integer_part;
-	int		fractional_part;
-	int		counter;
-	int		precision;
+	int	counter;
+	int	precision;
+	int	fractional_part;
 
 	counter = 0;
 	precision = 100;
+	fractional_part = (int)((num - integer_part) * precision + 0.5);
+	counter += ft_putchar_fd('.', fd);
+	if (fractional_part >= precision)
+		fractional_part = 0;
+	if (fractional_part < 10)
+		counter += ft_putchar_fd('0', fd);
+	if (fractional_part < 1)
+		counter += ft_putchar_fd('0', fd);
+	counter += ft_putnbr_base(fractional_part, "0123456789");
+	return (counter);
+}
+
+int	ft_put_float(double num, int fd)
+{
+	int	integer_part;
+	int	counter;
+
+	counter = 0;
 	if (num < 0)
 	{
-		counter += ft_putchar_fd('-', 1);
+		counter += ft_putchar_fd('-', fd);
 		num = -num;
 	}
 	integer_part = (int)num;
 	counter += ft_putnbr_base(integer_part, "0123456789");
-	counter += ft_putchar_fd('.', 1);
-	fractional_part = (int)((num - integer_part) * precision + 0.5);
-	if (fractional_part >= precision)
-	{
-		fractional_part = 0;
-		integer_part++;
-	}
-	if (fractional_part < 10)
-		counter += ft_putchar_fd('0', 1);
-	if (fractional_part < 1)
-		counter += ft_putchar_fd('0', 1);
-	counter += ft_putnbr_base(fractional_part, "0123456789");
+	counter += ft_fractional(num, integer_part, fd);
 	return (counter);
 }

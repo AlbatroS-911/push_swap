@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "simple_strategy.h"
 #include "bench.h"
+#include "simple_strategy.h"
 
 static int	bring_to_top(t_stack **stack, t_bench *bench, t_stack *target)
 {

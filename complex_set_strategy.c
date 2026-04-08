@@ -6,17 +6,17 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 20:33:26 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/03/26 08:47:56 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:57:14 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "complex_strategy.h"
+#include "push_swap.h"
 
-t_stack *find_target(t_stack *a, int b_value)
+t_stack	*find_target(t_stack *a, int b_value)
 {
-	t_stack *target;
-	t_stack *current;
+	t_stack	*target;
+	t_stack	*current;
 
 	target = NULL;
 	current = a;
@@ -34,7 +34,7 @@ t_stack *find_target(t_stack *a, int b_value)
 	return (target);
 }
 
-void set_targets(t_stack *a, t_stack *b)
+void	set_targets(t_stack *a, t_stack *b)
 {
 	while (b)
 	{
@@ -64,6 +64,7 @@ void	set_cheap_move(t_stack *b)
 	}
 	cheapest->cheap_move = true;
 }
+
 void	set_above_median_both(t_stack *a, t_stack *b)
 {
 	set_above_median(a);

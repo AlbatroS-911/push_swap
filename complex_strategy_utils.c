@@ -6,19 +6,19 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 20:10:26 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/04 16:47:23 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:51:41 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "complex_strategy.h"
 #include "bench.h"
+#include "complex_strategy.h"
+#include "push_swap.h"
 
 static int	sort_three(t_stack **stack, t_bench *bench)
 {
-	t_stack *max;
+	t_stack	*max;
 	int		ops;
-	
+
 	ops = 0;
 	max = find_max(*stack);
 	if (max == *stack)
@@ -37,13 +37,12 @@ static int	sort_three(t_stack **stack, t_bench *bench)
 		ops += sa(stack);
 	}
 	return (ops);
-
 }
 
 int	init_push(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int	size;
-	int pushed;
+	int	pushed;
 	int	ops;
 
 	size = stack_size(*a);
@@ -61,7 +60,7 @@ int	init_push(t_stack **a, t_stack **b, t_bench *bench)
 
 int	rotate_both(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench)
 {
-	int ops;
+	int	ops;
 
 	ops = 0;
 	while (*a != cheap->target_node && *b != cheap)
@@ -91,7 +90,7 @@ int	rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench)
 
 int	finish_rotation(t_stack **a, t_stack **b, t_stack *cheap, t_bench *bench)
 {
-	int ops;
+	int	ops;
 
 	ops = 0;
 	while (*b != cheap)

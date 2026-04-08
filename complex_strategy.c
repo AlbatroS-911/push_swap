@@ -6,12 +6,12 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 08:56:41 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/04 16:46:14 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:51:49 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "complex_strategy.h"
 #include "bench.h"
+#include "complex_strategy.h"
 
 static t_stack	*get_cheap_node(t_stack *b)
 {

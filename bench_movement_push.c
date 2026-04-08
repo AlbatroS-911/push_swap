@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 06:44:04 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/05 22:30:42 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 09:38:51 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	bench_pa(t_bench *bench)
 {
 	bench->pa++;
 	if (bench->print_moves)
-		ft_printf("pa\n");
+		ft_putstr_fd("pa\n", 1);
 }
 
 void	bench_pb(t_bench *bench)
 {
 	bench->pb++;
 	if (bench->print_moves)
-		ft_printf("pb\n");
+		ft_putstr_fd("pb\n", 1);
 }

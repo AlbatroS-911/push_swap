@@ -1,5 +1,17 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/07 18:50:47 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/04/08 13:14:57 by tokrabem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -19,13 +31,7 @@ int	main(int argc, char **argv)
 		add_back(&a, new_node(value));
 		i++;
 	}
-	// adaptive_strategy(&a, &b);
-	show_bench(&a, &b);
-	// i = 1;
-	// while (i < argc)
-	// {
-	// 	free(last_node(a));
-	// 	i++;
-	// }
+	adaptive_strategy(&a, &b);
+	// show_bench(&a, &b);
 	return (0);
 }

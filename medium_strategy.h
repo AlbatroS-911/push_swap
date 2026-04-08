@@ -6,15 +6,15 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 15:41:53 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/04 16:53:15 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:52:21 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MEDIUM_STRATEGY_H
 # define MEDIUM_STRATEGY_H
 
-# include "push_swap.h"
 # include "bench.h"
+# include "push_swap.h"
 
 void	finding_index(t_stack *stack);
 int		in_chunk(t_stack *node, int max, int min);

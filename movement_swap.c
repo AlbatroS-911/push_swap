@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement_swap.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/07 18:48:42 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/04/07 18:48:49 by tokrabem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void swap(t_stack **head)
+static void	swap(t_stack **head)
 {
-	t_stack *first;
-	t_stack *second;
-	
+	t_stack	*first;
+	t_stack	*second;
+
 	if (!*head || !(*head)->next)
 		return ;
 	first = *head;
@@ -16,7 +28,6 @@ static void swap(t_stack **head)
 	second->next = first;
 	first->prev = second;
 	*head = second;
-	
 }
 
 int	sa(t_stack **a)

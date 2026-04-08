@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 09:33:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/01 14:42:03 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 09:44:19 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@ static int	check_format(char element, va_list *arg)
 	if (element == 'd' || element == 'i')
 		return (ft_putnbr_base(va_arg(*arg, int), "0123456789"));
 	else if (element == 'f')
-		return (ft_put_float(va_arg(*arg, double)));
+		return (ft_put_float(va_arg(*arg, double), 2));
 	else if (element == 'c')
-		return (ft_putchar_fd(va_arg(*arg, int), 1));
+		return (ft_putchar_fd(va_arg(*arg, int), 2));
 	else if (element == 's')
-		return (ft_putstr_fd(va_arg(*arg, char *), 1));
+		return (ft_putstr_fd(va_arg(*arg, char *), 2));
 	else if (element == 'p')
-		return (ft_print_add(va_arg(*arg, void *), 1));
+		return (ft_print_add(va_arg(*arg, void *), 2));
 	else if (element == 'x')
 		return (ft_putnbr_base(va_arg(*arg, unsigned int), "0123456789abcdef"));
 	else if (element == 'X')
 		return (ft_putnbr_base(va_arg(*arg, unsigned int), "0123456789ABCDEF"));
 	else if (element == 'u')
-		return (ft_un_int(va_arg(*arg, unsigned int), 1));
+		return (ft_un_int(va_arg(*arg, unsigned int), 2));
 	else if (element == '%')
-		return (ft_putchar_fd('%', 1));
+		return (ft_putchar_fd('%', 2));
 	return (0);
 }
 

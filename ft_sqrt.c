@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 16:19:34 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/03/24 19:17:46 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:52:10 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 float	ft_sqrt(int number)
 {
 	double	i;
-	
+
 	i = 0.01;
 	while (i * i <= number)
 	{
 		if (i * i == number)
-			return(i);
+			return (i);
 		i = i + 0.01;
 	}
 	return (i);

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movement_reverse_rotate.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/07 18:48:32 by tokrabem          #+#    #+#             */
+/*   Updated: 2026/04/07 19:24:34 by tokrabem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void reverse_rotate(t_stack **stack)
+static void	reverse_rotate(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -15,6 +27,7 @@ static void reverse_rotate(t_stack **stack)
 	first->prev = last;
 	*stack = last;
 }
+
 int	rra(t_stack **a)
 {
 	reverse_rotate(a);

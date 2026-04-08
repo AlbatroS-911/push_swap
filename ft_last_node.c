@@ -6,13 +6,13 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:50:24 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/03/20 21:50:25 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:51:59 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *last_node(t_stack *a)
+t_stack	*last_node(t_stack *a)
 {
 	if (!a)
 		return (NULL);

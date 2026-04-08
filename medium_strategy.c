@@ -6,12 +6,12 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/04 16:46:08 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/07 18:52:27 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "medium_strategy.h"
 #include "bench.h"
+#include "medium_strategy.h"
 
 static int	bring_b_to_top(t_stack **b, t_bench *bench, t_stack *target)
 {
