@@ -6,7 +6,7 @@
 #    By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/06 15:44:06 by anjaraan          #+#    #+#              #
-#    Updated: 2026/04/08 16:13:37 by tokrabem         ###   ########.fr        #
+#    Updated: 2026/04/09 10:22:02 by tokrabem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = push_swap.c is_sorted.c movement_push.c movement_rotate.c movement_reverse
 	  simple_strategy_utils.c ft_stack_size.c set_above_median.c medium_strategy.c medium_strategy_utils.c \
 	  complex_strategy.c complex_strategy_utils.c complex_init_push.c complex_set_strategy.c complex_set_cost.c \
 	  bench.c bench_movement_push.c bench_movement_reverse_rotate.c bench_movement_rotate.c bench_movement_swap.c \
-	  push_swap_utils.c
+	  push_swap_utils.c parsing_check_bench.c parsing_check_flag.c parsing_ft_strcmp.c parsing_function.c parsing_print_error.c \
+	  parsing_stack_utils.c parsing_utils.c 
 
 OBJ = $(SRC:.c=.o)
 

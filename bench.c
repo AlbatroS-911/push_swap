@@ -6,12 +6,13 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/08 19:52:46 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 13:29:03 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bench.h"
 #include "push_swap.h"
+#include "parsing.h"
 
 static void	init_move_bench(t_bench *bench)
 {
