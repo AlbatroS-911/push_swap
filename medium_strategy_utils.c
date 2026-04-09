@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:35:35 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/08 20:45:58 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 08:19:47 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,11 @@ static int	push_chunk_operation(t_stack **a, t_stack **b,
 int	push_chunk(t_stack **a, t_stack **b, t_intruction *instruct)
 {
 	int	pushed;
-	int	chunk_count;
 	int	ops;
 
-	chunk_count = instruct->max - instruct->min + 1;
 	pushed = 0;
 	ops = 0;
-	while (pushed < chunk_count && *a)
+	while (pushed < (instruct->max - instruct->min + 1) && *a)
 	{
 		if (in_chunk(*a, instruct->min, instruct->max))
 		{
