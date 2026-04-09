@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/07 18:48:04 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 19:52:46 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	show_bench(t_stack **a, t_stack **b)
 	t_bench	*bench;
 
 	bench = malloc(sizeof(t_bench));
+	if (!bench)
+		return ;
 	init_move_bench(bench);
 	disorder_index = compute_disorder(*a);
 	if (disorder_index < 0.2)

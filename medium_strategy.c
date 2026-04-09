@@ -6,11 +6,10 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/07 18:52:27 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 19:54:07 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bench.h"
 #include "medium_strategy.h"
 
 static int	bring_b_to_top(t_stack **b, t_bench *bench, t_stack *target)
@@ -53,25 +52,29 @@ static int	pull_back(t_stack **a, t_stack **b, t_bench *bench)
 
 int	medium_strategy(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int	size;
-	int	chunk;
-	int	min;
-	int	max;
-	int	total_ops;
+	int				size;
+	int				chunk;
+	t_intruction	*instruct;
+	int				total_ops;
 
 	finding_index(*a);
 	size = stack_size(*a);
 	chunk = 0;
 	total_ops = 0;
+	instruct = malloc(sizeof(t_intruction));
+	if (!instruct)
+		return (0);
+	instruct->bench = bench;
 	while (chunk * (int)ft_sqrt((double)size) < size)
 	{
-		min = chunk * (int)ft_sqrt((double)size);
-		max = min + (int)ft_sqrt((double)size) - 1;
-		if (max >= size)
-			max = size - 1;
-		total_ops += push_chunk(a, b, bench, min, max);
+		instruct->min = chunk * (int)ft_sqrt((double)size);
+		instruct->max = instruct->min + (int)ft_sqrt((double)size) - 1;
+		if (instruct->max >= size)
+			instruct->max = size - 1;
+		total_ops += push_chunk(a, b, instruct);
 		chunk++;
 	}
 	total_ops += pull_back(a, b, bench);
+	free(instruct);
 	return (total_ops);
 }

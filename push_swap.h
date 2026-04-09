@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/07 18:50:35 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 19:38:08 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*target_node;
 }					t_stack;
+
+typedef struct s_intruction
+{
+	t_bench			*bench;
+	int				min;
+	int				max;
+}					t_intruction;
 
 int					sa(t_stack **a);
 int					sb(t_stack **b);

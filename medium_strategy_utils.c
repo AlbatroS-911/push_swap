@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:35:35 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/07 18:52:31 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:45:58 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,36 +63,46 @@ int	top_closer(t_stack **a, int min, int max)
 	return (top_distance <= bottom_distance);
 }
 
-int	push_chunk(t_stack **a, t_stack **b, t_bench *bench, int min, int max)
+static int	push_chunk_operation(t_stack **a, t_stack **b,
+		t_intruction *instruct)
+{
+	int	ops;
+
+	ops = 0;
+	bench_pb(instruct->bench);
+	ops += pb(a, b);
+	if ((*b)->index > (instruct->min + instruct->max) / 2)
+	{
+		bench_rb(instruct->bench);
+		ops += rb(b);
+	}
+	return (ops);
+}
+
+int	push_chunk(t_stack **a, t_stack **b, t_intruction *instruct)
 {
 	int	pushed;
 	int	chunk_count;
 	int	ops;
 
-	chunk_count = max - min + 1;
+	chunk_count = instruct->max - instruct->min + 1;
 	pushed = 0;
 	ops = 0;
 	while (pushed < chunk_count && *a)
 	{
-		if (in_chunk(*a, min, max))
+		if (in_chunk(*a, instruct->min, instruct->max))
 		{
-			bench_pb(bench);
-			ops += pb(a, b);
-			if ((*b)->index > (min + max) / 2)
-			{
-				bench_rb(bench);
-				ops += rb(b);
-			}
+			ops += push_chunk_operation(a, b, instruct);
 			pushed++;
 		}
-		else if (top_closer(a, min, max))
+		else if (top_closer(a, instruct->min, instruct->max))
 		{
-			bench_ra(bench);
+			bench_ra(instruct->bench);
 			ops += ra(a);
 		}
 		else
 		{
-			bench_rra(bench);
+			bench_rra(instruct->bench);
 			ops += rra(a);
 		}
 	}
