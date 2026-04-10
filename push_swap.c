@@ -6,43 +6,51 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:50:47 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/09 11:38:16 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 21:28:43 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "parsing.h"
+#include "push_swap.h"
+
+static void	flag_selector(t_stack **a, t_stack **b, t_bench *bench,
+		t_flagBench *flag_bench)
+{
+	if (check_flag(flag_bench->flag) == 1)
+		simple_strategy(a, b, bench);
+	else if (check_flag(flag_bench->flag) == 2)
+		medium_strategy(a, b, bench);
+	else if (check_flag(flag_bench->flag) == 3)
+		complex_strategy(a, b, bench);
+	else if (check_flag(flag_bench->flag) == 4
+		|| !(check_flag(flag_bench->flag)))
+		adaptive_strategy(a, b);
+}
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_bench *bench;
-	char *flag = NULL;
-	char *ben = NULL;
+	t_stack		*a;
+	t_stack		*b;
+	t_bench		*bench;
+	t_flagBench	*flag_bench;
 
 	a = NULL;
 	b = NULL;
 	bench = malloc(sizeof(t_bench));
-	bench->print_moves = 1;
-	if (argc < 2)
+	flag_bench = malloc(sizeof(t_flagBench));
+	if (!bench || !flag_bench || (argc < 2))
 		return (0);
-	parse_all_input(argc, argv, &a, &flag, &ben);
-	ft_printf("%s\n%s\n", flag, ben);
-	if (!check_bench_flag(ben))
-	{
-		if (check_flag(flag) == 2)
-			simple_strategy(&a, &b, bench);
-		if (check_flag(flag) == 1)
-			medium_strategy(&a, &b, bench);
-		if (check_flag(flag) == 3)
-			complex_strategy(&a, &b, bench);
-		if (check_flag(flag) == 4 || !(check_flag(flag)))
-			adaptive_strategy(&a, &b);
-	}
+	bench->print_moves = 1;
+	parse_all_input(argc, argv, &a, flag_bench);
+	if (!check_bench_flag(flag_bench->bench))
+		flag_selector(&a, &b, bench, flag_bench);
 	else
 	{
-		show_bench(&a, &b);
+		show_bench(&a, &b, flag_bench->flag);
 	}
+	free_stack(&a);
+	free_stack(&b);
+	free(bench);
+	free(flag_bench);
 	return (0);
 }

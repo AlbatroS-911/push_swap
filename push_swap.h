@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/08 19:38:08 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 16:34:25 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int					rra(t_stack **a);
 int					rrb(t_stack **b);
 int					rrr(t_stack **a, t_stack **b);
 int					is_sorted(t_stack *stack);
-void				show_bench(t_stack **a, t_stack **b);
+void				show_bench(t_stack **a, t_stack **b, char *flag);
 void				adaptive_strategy(t_stack **a, t_stack **b);
 int					simple_strategy(t_stack **a, t_stack **b, t_bench *bench);
 int					medium_strategy(t_stack **a, t_stack **b, t_bench *bench);

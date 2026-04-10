@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 00:35:56 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/02/25 12:27:13 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 16:59:23 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putstr_fd(char *s, int fd)
 	i = 0;
 	if (!s)
 	{
-		write(1, "(null)", 6);
+		write(fd, "(null)", 6);
 		return (6);
 	}
 	while (s[i] != '\0')

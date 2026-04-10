@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 09:55:05 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/09 11:14:58 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 19:48:39 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	valide_flag(int argc, char **argv, t_stack **stack)
 		print_error(stack);
 		return (0);
 	}
-	if (check_flag_position(argc, argv) == 0
-		|| check_bench_flag_position(argc, argv) == 0)
+	if (check_flag_position(argc, argv) == 0 || check_bench_flag_position(argc,
+			argv) == 0)
 	{
 		print_error(stack);
 		return (0);
@@ -77,29 +77,22 @@ int	valide_flag(int argc, char **argv, t_stack **stack)
 	return (1);
 }
 
-void	parse_all_input(int argc, char **argv, t_stack **stack, char **flag, char **bench)
+void	parse_all_input(int argc, char **argv, t_stack **stack,
+		t_flagBench *flagBench)
 {
-	int		i;
-	// char	*flag;
-	// char	*bench;
+	int	i;
 
-	*flag = "";
-	*bench = "";
+	flagBench->flag = "";
+	flagBench->bench = "";
 	if (!valide_flag(argc, argv, stack))
 		return ;
 	i = 1;
 	while (i < argc)
 	{
 		if (is_flag(argv[i]))
-		{
-			*flag = argv[i];
-			ft_printf("Flag détecté : %s\n", *flag);
-		}
+			flagBench->flag = argv[i];
 		else if (is_bench(argv[i]))
-		{
-			*bench = argv[i];
-			ft_printf("Bench flag détecté : %s\n", *bench);
-		}
+			flagBench->bench = argv[i];
 		else
 			parse_int_input(argv, stack, i, i + 1);
 		i++;

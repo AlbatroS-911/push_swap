@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 10:27:39 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/02/23 20:37:17 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/09 17:00:33 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_puthex_add(unsigned long num)
 	base = "0123456789abcdef";
 	if (num >= 16)
 		counter += ft_puthex_add(num / 16);
-	ft_putchar_fd(base[num % 16], 1);
+	ft_putchar_fd(base[num % 16], 2);
 	return (counter + 1);
 }
 
@@ -35,7 +35,7 @@ int	ft_print_add(void *address, int fd)
 		counter += ft_putstr_fd("(nil)", fd);
 		return (counter);
 	}
-	ft_putstr_fd("0x", 1);
+	ft_putstr_fd("0x", fd);
 	counter += ft_puthex_add((unsigned long)address);
 	return (ft_strlen("0x") + counter);
 }
