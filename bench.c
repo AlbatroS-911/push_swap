@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/09 22:27:46 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/10 06:47:21 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	show_specific_bench(t_stack **a, t_stack **b, t_bench *bench,
 	float	disorder_index;
 
 	disorder_index = compute_disorder(*a);
+	bench->print_moves = 1;
 	if (check_flag(flag) == 1)
 		print_bench_details(disorder_index, "Simple / O(n²)", bench,
 			simple_strategy(a, b, bench));
@@ -68,12 +69,12 @@ void	show_bench(t_stack **a, t_stack **b, char *flag)
 	if (!bench)
 		return ;
 	init_move_bench(bench);
-	bench->print_moves = 1;
 	disorder_index = compute_disorder(*a);
 	if (check_flag(flag) && check_flag(flag) != 4)
 		show_specific_bench(a, b, bench, flag);
 	else
 	{
+		bench->print_moves = 1;
 		if (disorder_index < 0.2)
 			print_bench_details(disorder_index, "Adaptive / O(n²)", bench,
 				simple_strategy(a, b, bench));

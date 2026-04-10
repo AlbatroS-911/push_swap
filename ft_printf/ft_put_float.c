@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 23:28:55 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/09 21:51:02 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/10 07:00:38 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ static int	ft_fractional(double num, int integer_part, int fd)
 	counter += ft_putchar_fd('.', fd);
 	if (fractional_part >= precision)
 		fractional_part = 0;
-	if (fractional_part < 10)
+	if (fractional_part == 0)
+	{
 		counter += ft_putchar_fd('0', fd);
-	if (fractional_part < 1)
+		counter += ft_putchar_fd('0', fd);
+		return (counter);
+	}
+	if (fractional_part < 10)
 		counter += ft_putchar_fd('0', fd);
 	counter += ft_putnbr_base(fractional_part, "0123456789", fd);
 	return (counter);
