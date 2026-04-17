@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:50:47 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/09 21:28:43 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/17 19:54:24 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static void	flag_selector(t_stack **a, t_stack **b, t_bench *bench,
 		|| !(check_flag(flag_bench->flag)))
 		adaptive_strategy(a, b);
 }
+static void	check_and_free(t_stack **a, t_stack **b, t_bench *bench,
+		t_flagBench *flag_bench)
+{
+	if (!check_bench_flag(flag_bench->bench))
+		flag_selector(a, b, bench, flag_bench);
+	else
+		show_bench(a, b, flag_bench->flag);
+	free_stack(a);
+	free_stack(b);
+	free(bench);
+	free(flag_bench);
+}
 
 int	main(int argc, char **argv)
 {
@@ -34,23 +46,18 @@ int	main(int argc, char **argv)
 	t_bench		*bench;
 	t_flagBench	*flag_bench;
 
+	if (argc < 2)
+		return (0);
 	a = NULL;
 	b = NULL;
 	bench = malloc(sizeof(t_bench));
-	flag_bench = malloc(sizeof(t_flagBench));
-	if (!bench || !flag_bench || (argc < 2))
-		return (0);
+	if (!bench)
+		free(bench);
+	flag_bench = malloc(sizeof(t_bench));
+	if (!flag_bench)
+		free(flag_bench);
 	bench->print_moves = 1;
 	parse_all_input(argc, argv, &a, flag_bench);
-	if (!check_bench_flag(flag_bench->bench))
-		flag_selector(&a, &b, bench, flag_bench);
-	else
-	{
-		show_bench(&a, &b, flag_bench->flag);
-	}
-	free_stack(&a);
-	free_stack(&b);
-	free(bench);
-	free(flag_bench);
+	check_and_free(&a, &b, bench, flag_bench);
 	return (0);
 }

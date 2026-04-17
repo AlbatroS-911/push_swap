@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_strategy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/16 23:43:43 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/17 14:07:41 by anjaraan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,6 @@ static int	pull_back(t_stack **a, t_stack **b, t_bench *bench)
 	return (ops);
 }
 
-static int	small_sort(t_stack **a, t_stack **b, t_bench *bench)
-{
-	t_stack	*min;
-	int		ops;
-
-	ops = 0;
-	while (*a && !is_sorted(*a))
-	{
-		set_above_median(*a);
-		min = find_min(*a);
-		while (*a != min)
-		{
-			if (min->above_median)
-			{
-				bench_ra(bench);
-				ops += ra(a);
-			}
-			else
-			{
-				bench_rra(bench);
-				ops += rra(a);
-			}
-		}
-		bench_pb(bench);
-		ops += pb(a, b);
-	}
-	return (ops + pull_back(a, b, bench));
-}
-
 static int	main_medium_operation(t_stack **a, t_stack **b, int size,
 		t_bench *bench)
 {
@@ -114,7 +85,7 @@ int	medium_strategy(t_stack **a, t_stack **b, t_bench *bench)
 	size = stack_size(*a);
 	total_ops = 0;
 	if (size <= 25)
-		total_ops += small_sort(a, b, bench);
+		total_ops += simple_strategy(a, b, bench);
 	else
 	{
 		total_ops += main_medium_operation(a, b, size, bench);

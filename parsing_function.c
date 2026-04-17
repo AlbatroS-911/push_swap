@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_function.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 09:55:05 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/09 19:48:39 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/11 10:47:53 by anjaraan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

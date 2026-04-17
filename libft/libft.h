@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 10:01:17 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/02/16 21:32:29 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/11 11:23:58 by anjaraan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "stdlib.h"
 # include "unistd.h"
 
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

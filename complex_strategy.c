@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_strategy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 08:56:41 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/16 19:44:46 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/11 11:38:12 by anjaraan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ static int	finalize_sort(t_stack **a, t_bench *bench)
 int	complex_strategy(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int	total_ops;
-	int	size;
 
 	total_ops = 0;
-	size = stack_size(*a);
+	if (is_sorted(*a))
+		return (total_ops);
 	total_ops += init_push(a, b, bench);
 	while (*b)
 	{

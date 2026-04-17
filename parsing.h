@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/09 19:48:26 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/17 15:32:03 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_flagBench
 	char	*flag;
 	char	*bench;
 }			t_flagBench;
+
 void		parse_int_input(char **argv, t_stack **stack, int start, int end);
 t_stack		*new_node(int value);
 void		free_tokens(char **tokens);

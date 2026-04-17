@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_strategy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
+/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/09 22:28:17 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/11 11:09:35 by anjaraan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void	adaptive_strategy(t_stack **a, t_stack **b)
 	bench = malloc(sizeof(t_bench));
 	bench->print_moves = 1;
 	total_ops = 0;
-	if (disorder_index < 0.2)
+	if (disorder_index == 0)
+	{
+		free(bench);
+		return ;
+	}
+	else if (disorder_index < 0.2)
 		simple_strategy(a, b, bench);
 	else if (disorder_index >= 0.2 && disorder_index < 0.5)
 		medium_strategy(a, b, bench);
