@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 16:09:35 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/08 16:17:49 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/16 19:46:30 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	init_push(t_stack **a, t_stack **b, t_bench *bench)
 	size = stack_size(*a);
 	pushed = 0;
 	ops = 0;
+	if (size == 1 || is_sorted(*a))
+		return (0);
 	while (size-- > 3)
 	{
 		bench_pb(bench);

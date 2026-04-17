@@ -76,6 +76,8 @@ int	simple_strategy(t_stack **a, t_stack **b, t_bench *bench)
 
 	size = stack_size(*a);
 	total_ops = 0;
+	if (size == 1 || is_sorted(*a))
+		return (0);
 	while (size-- > 3)
 	{
 		set_above_median(*a);

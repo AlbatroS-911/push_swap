@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 11:28:20 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/08 19:54:07 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/16 23:43:43 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,75 @@ static int	pull_back(t_stack **a, t_stack **b, t_bench *bench)
 	return (ops);
 }
 
-int	medium_strategy(t_stack **a, t_stack **b, t_bench *bench)
+static int	small_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int				size;
-	int				chunk;
-	t_intruction	*instruct;
-	int				total_ops;
+	t_stack	*min;
+	int		ops;
 
-	finding_index(*a);
-	size = stack_size(*a);
+	ops = 0;
+	while (*a && !is_sorted(*a))
+	{
+		set_above_median(*a);
+		min = find_min(*a);
+		while (*a != min)
+		{
+			if (min->above_median)
+			{
+				bench_ra(bench);
+				ops += ra(a);
+			}
+			else
+			{
+				bench_rra(bench);
+				ops += rra(a);
+			}
+		}
+		bench_pb(bench);
+		ops += pb(a, b);
+	}
+	return (ops + pull_back(a, b, bench));
+}
+
+static int	main_medium_operation(t_stack **a, t_stack **b, int size,
+		t_bench *bench)
+{
+	t_intruction	*instruct;
+	int				chunk;
+	int				ops;
+
 	chunk = 0;
-	total_ops = 0;
+	ops = 0;
 	instruct = malloc(sizeof(t_intruction));
 	if (!instruct)
 		return (0);
 	instruct->bench = bench;
-	while (chunk * (int)ft_sqrt((double)size) < size)
+	while (chunk * (int)ft_sqrt((double)size) < size && !is_sorted(*a))
 	{
 		instruct->min = chunk * (int)ft_sqrt((double)size);
 		instruct->max = instruct->min + (int)ft_sqrt((double)size) - 1;
 		if (instruct->max >= size)
 			instruct->max = size - 1;
-		total_ops += push_chunk(a, b, instruct);
+		ops += push_chunk(a, b, instruct);
 		chunk++;
 	}
-	total_ops += pull_back(a, b, bench);
 	free(instruct);
+	return (ops);
+}
+
+int	medium_strategy(t_stack **a, t_stack **b, t_bench *bench)
+{
+	int	size;
+	int	total_ops;
+
+	finding_index(*a);
+	size = stack_size(*a);
+	total_ops = 0;
+	if (size <= 25)
+		total_ops += small_sort(a, b, bench);
+	else
+	{
+		total_ops += main_medium_operation(a, b, size, bench);
+		total_ops += pull_back(a, b, bench);
+	}
 	return (total_ops);
 }
