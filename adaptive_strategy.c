@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_strategy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anjaraan <anjaraan@student.42antananari    +#+  +:+       +#+        */
+/*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/11 11:09:35 by anjaraan         ###   ########.fr       */
+/*   Updated: 2026/04/18 06:34:23 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	adaptive_strategy(t_stack **a, t_stack **b)
 	else if (disorder_index >= 0.2 && disorder_index < 0.5)
 		medium_strategy(a, b, bench);
 	else
-		complex_strategy(a, b, bench);
+		complex_strategy_radix(a, b, bench);
 	free(bench);
 }

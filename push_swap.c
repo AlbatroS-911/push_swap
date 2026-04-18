@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 18:50:47 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/17 19:54:24 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/18 06:34:34 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	flag_selector(t_stack **a, t_stack **b, t_bench *bench,
 	else if (check_flag(flag_bench->flag) == 2)
 		medium_strategy(a, b, bench);
 	else if (check_flag(flag_bench->flag) == 3)
-		complex_strategy(a, b, bench);
+		complex_strategy_radix(a, b, bench);
 	else if (check_flag(flag_bench->flag) == 4
 		|| !(check_flag(flag_bench->flag)))
 		adaptive_strategy(a, b);
