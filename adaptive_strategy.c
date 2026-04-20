@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/18 06:34:23 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/21 00:04:58 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	adaptive_strategy(t_stack **a, t_stack **b)
 {
 	float	disorder_index;
 	t_bench	*bench;
-	int		total_ops;
 
 	disorder_index = compute_disorder(*a);
 	bench = malloc(sizeof(t_bench));
 	bench->print_moves = 1;
-	total_ops = 0;
 	if (disorder_index == 0)
 	{
 		free(bench);

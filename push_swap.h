@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/18 06:33:59 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/21 00:05:49 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void				set_above_median(t_stack *stack);
 float				ft_sqrt(int number);
 void				add_back(t_stack **stack, t_stack *new);
 void				print_stack(t_stack *stack);
-int					complex_strategy_radix(t_stack **a, t_stack **b, t_bench *bench);
+int					complex_strategy_radix(t_stack **a, t_stack **b,
+						t_bench *bench);
 
 #endif
