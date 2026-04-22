@@ -2,7 +2,7 @@
 
 ---
 
-# push_swap
+# Push_swap
 
 ## Description
 
@@ -196,11 +196,5 @@ Stats go to **stderr** so they never interfere with the move output on stdout, w
 
 ### AI usage
 
-**Claude (Anthropic)** was used throughout this project in the following ways:
 
-- **Algorithm design and explanation** — understanding the Turk algorithm's target-finding logic and cost calculation, and reasoning about why merge sort degrades to O(n² log n) on stacks
-- **Debugging** — identifying inverted comparison operators in `find_min`/`find_max`, diagnosing the circular include between `push_swap.h` and `bench.h`, tracing the `find_target` inversion bug in the complex strategy
-- **Benchmarking** — building test harnesses to compare move counts across algorithms and chunk sizes, finding the optimal chunk size formula (`n/4`) for the medium strategy
-- **Code review** — catching unused parameters, missing return values, double-printing in `rr`/`rrr`, and memory leaks from `exit()` bypassing cleanup
-
-All algorithmic decisions, implementation choices, and final code were made and written by the project authors. AI was used as a reference and debugging tool, not as a code generator.
+All algorithmic decisions, implementation choices, and final code were made and written by the project authors. AI was used as a reference and debugging tool.
