@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 15:47:56 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/20 23:12:24 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/22 17:23:43 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ typedef struct s_flagBench
 	char	*bench;
 }			t_flagBench;
 
-typedef	struct s_error
+typedef struct s_error
 {
 	t_bench		*bench;
-	t_flagBench	*flagBench;
+	t_flagBench	*flag_bench;
 }			t_error;
 
-typedef struct s_input
+typedef struct s_range
 {
 	int	start;
 	int	end;
-}			t_input;
+}			t_range;
 
-void		parse_int_input(char **argv, t_stack **stack, int start, int end, t_error *error);
+void		parse_int_input(char **argv, t_stack **stack, t_range range,
+				t_error *error);
 t_stack		*new_node(int value);
 void		free_tokens(char **tokens);
 void		append_node(t_stack **stack, int value);

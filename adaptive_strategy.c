@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/21 00:04:58 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/21 16:41:07 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	adaptive_strategy(t_stack **a, t_stack **b)
 	else if (disorder_index >= 0.2 && disorder_index < 0.5)
 		medium_strategy(a, b, bench);
 	else
-		complex_strategy_radix(a, b, bench);
+		complex_strategy(a, b, bench);
 	free(bench);
 }

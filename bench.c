@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:27:31 by tokrabem          #+#    #+#             */
-/*   Updated: 2026/04/18 06:34:13 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/22 16:57:10 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	show_specific_bench(t_stack **a, t_stack **b, t_bench *bench,
 			medium_strategy(a, b, bench));
 	else if (check_flag(flag) == 3)
 		print_bench_details(disorder_index, "Complex / O(n log n)", bench,
-			complex_strategy_radix(a, b, bench));
+			complex_strategy(a, b, bench));
 }
 
 void	show_bench(t_stack **a, t_stack **b, char *flag)
@@ -83,7 +83,7 @@ void	show_bench(t_stack **a, t_stack **b, char *flag)
 				medium_strategy(a, b, bench));
 		else
 			print_bench_details(disorder_index, "Adaptive / O(n log n)", bench,
-				complex_strategy_radix(a, b, bench));
+				complex_strategy(a, b, bench));
 	}
 	free(bench);
 }

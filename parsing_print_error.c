@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 10:05:44 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/20 19:14:20 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/21 11:44:34 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_error(t_stack **stack, t_error *error)
 	if (error)
 	{
 		free(error->bench);
-		free(error->flagBench);
+		free(error->flag_bench);
 		free(error);
 	}
 	exit(EXIT_FAILURE);

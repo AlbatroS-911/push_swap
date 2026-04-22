@@ -6,7 +6,7 @@
 /*   By: tokrabem <tokrabem@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 09:55:05 by anjaraan          #+#    #+#             */
-/*   Updated: 2026/04/20 23:06:26 by tokrabem         ###   ########.fr       */
+/*   Updated: 2026/04/22 17:26:30 by tokrabem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,27 @@ void	split_and_loop(char *input, t_stack **stack, t_error *error)
 	free_tokens(tokens);
 }
 
-void	parse_int_input(char **argv, t_stack **stack, int start, int end, t_error *error)
+void	parse_int_input(char **argv, t_stack **stack, t_range range,
+			t_error *error)
 {
 	long	value;
-	
-	while (start < end)
+
+	while (range.start < range.end)
 	{
-		if (ft_strchr(argv[start], ' '))
-			split_and_loop(argv[start], stack, error);
+		if (ft_strchr(argv[range.start], ' '))
+			split_and_loop(argv[range.start], stack, error);
 		else
 		{
-			if (!is_number(argv[start]))
+			if (!is_number(argv[range.start]))
 				print_error(stack, error);
-			value = ft_atoi(argv[start]);
+			value = ft_atoi(argv[range.start]);
 			if (value < -2147483648 || value > 2147483647)
 				print_error(stack, error);
 			append_node(stack, value);
 			if (check_duplicates(*stack) == 0)
 				print_error(stack, error);
 		}
-		start++;
+		range.start++;
 	}
 }
 
@@ -81,21 +82,26 @@ int	valide_flag(int argc, char **argv, t_stack **stack, t_error *error)
 void	parse_all_input(int argc, char **argv, t_stack **stack,
 		t_error *error)
 {
-	int	i;
-	
-	error->flagBench->flag = "";
-	error->flagBench->bench = "";
+	int		i;
+	t_range	range;
+
+	error->flag_bench->flag = "";
+	error->flag_bench->bench = "";
 	if (!valide_flag(argc, argv, stack, error))
 		return ;
 	i = 1;
 	while (i < argc)
 	{
 		if (is_flag(argv[i]))
-			error->flagBench->flag = argv[i];
+			error->flag_bench->flag = argv[i];
 		else if (is_bench(argv[i]))
-			error->flagBench->bench = argv[i];
+			error->flag_bench->bench = argv[i];
 		else
-			parse_int_input(argv, stack, i, i + 1, error);
+		{
+			range.start = i;
+			range.end = i + 1;
+			parse_int_input(argv, stack, range, error);
+		}
 		i++;
 	}
 }
